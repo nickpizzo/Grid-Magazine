@@ -1,0 +1,308 @@
+color-gray = #c9c7c8
+sans-font-family =  'Roboto', sans-serif
+serif-font-family = 'Philosopher', sans-
+serif
+
+*
+  box-sizing: border-box
+  padding: 0
+  margin: 0
+
+@supports (display: grid)
+  .notice
+    display: none
+
+html,
+body
+  background-color: #ebe9ea
+  width: 100%
+  min-height: 100%
+  margin: 0
+  padding: 0
+
+body
+  font-family: serif-font-family
+  color: #333
+
+.notice
+  width: 100%
+  background-color: #333
+  color: #fff
+  padding: 1rem
+  text-align: center
+  font-family: sans-font-family
+  font-weight: 700
+  letter-spacing: 1px
+  text-transform: uppercase
+  a
+    color: #fff
+    text-decoration: none
+    border-bottom: 1px solid white
+
+blockquote
+  font-weight: bold
+  position: relative
+  margin-left: 0
+  margin-right: 0
+  bar-size = 24px
+  &:before,
+  &:after
+    content: ''
+    display: block
+    position: absolute
+    height: bar-size
+    width: 1px
+    margin-left: -1px
+    left: 50%
+    top: 0
+    margin-top: (bar-size * -1px) + 5px
+    background-color: color-gray
+  &:after
+    top: 100%
+    margin-top: -5px
+  p
+    font-family: sans-font-family
+    font-size: 1.25rem
+    line-height: 1.3
+    padding-top: 10px
+    padding-bottom: 10px
+    margin-top: 2.5rem
+    margin-bottom: 2.5rem
+
+h2
+  font-size: 1.5rem
+  text-transform: uppercase
+  margin-bottom: 1.4rem
+  margin-top: 0
+
+p
+  line-height: 1.5
+  font-size: 1rem
+  margin-top: 0
+
+figure
+  line-height: 0
+  margin: 0
+  padding: 0
+  box-shadow: 0px 12px 18px 0px rgba(0, 0, 0, 0.23)
+
+img
+  width: 100%
+
+g-max-width = 1440px
+g-min-column-width = 300px
+breakpoint-md = 640px
+// enough space for 4 columns
+breakpoint-lg = g-min-column-width * 4px
+
+.main-header
+  display: flex
+  justify-content: space-around
+  text-align: center
+  @media (max-width: breakpoint-md)
+    padding-top: 10px
+    padding-bottom: 10px
+  &-block
+    display: inline-block
+  &-heading,
+  &-num
+    font-size: 0.9rem
+    font-weight: normal
+    line-height: 1
+    margin: 0
+    &--border
+      width: 10px
+      background: #333
+      height: 1px
+      display: inline-block
+      position: relative
+      top: -4px
+      &:first-child
+        margin-right: 3px
+      &:last-child
+        margin-left: 3px
+    &--borders
+      position: relative
+      outline: 1px solid blue
+      &:before
+      // &:after
+        content: ''
+        display: block
+        position: absolute
+        left: 0
+        top: 50%
+        width: 20x
+        height: 2px
+        background-color: #333
+      &:before
+        left: -10x
+        border: 1px solid red
+
+.facts
+  display: flex
+  justify-content: space-between
+  margin: 1.7rem 0
+  padding: 0
+  list-style: none
+  @media (max-width: breakpoint-md)
+    padding-left: 20px
+    padding-right: 20px
+
+.fact
+  display: inline-block
+  padding-left: 20px
+
+  &:first-child
+    padding-left: 0
+    border-left: 0
+
+  &-number,
+  &-label
+    display: block
+    font-family: sans-font-family
+
+  &-number
+    color: #aaa
+    font-size: 2.5rem
+    font-weight: 100
+
+  &-label
+    font-weight: 700
+    font-size: 0.8rem
+    margin-top: 0.5rem
+
+.grid
+  min-height: 100vh
+  min-width: g-min-column-width
+  max-width: g-max-width
+  margin: 0 auto
+
+.cell
+  &--vSpace
+    margin-bottom: 1.5rem
+
+  @media (max-width: breakpoint-md)
+    padding-left: 20px
+    padding-right: 20px
+
+  &--fig1,
+  &--fig2
+    padding-left: 0
+    padding-right: 0
+
+.has-on-sm-padLeft
+    @media (max-width: breakpoint-md)
+      padding-left: 20px
+
+.has-on-sm-padRight
+    @media (max-width: breakpoint-md)
+      padding-right: 20px
+
+.has-on-md-padLeft
+    @media (min-width: breakpoint-md) and (max-width: breakpoint-lg)
+      padding-left: 20px
+
+.has-on-md-padRight
+    @media (min-width: breakpoint-md) and (max-width: breakpoint-lg)
+      padding-right: 20px
+
+.has-on-lg-padLeft
+    @media (min-width: breakpoint-lg)
+      padding-left: 20px
+
+.has-on-lg-padRight
+    @media (min-width: breakpoint-lg)
+        padding-right: 20px
+
+.has-on-md-divider
+    @media (min-width: breakpoint-md)
+        border-left: 1px solid color-gray
+
+.has-on-lg-divider
+    @media (min-width: breakpoint-lg)
+        border-left: 1px solid color-gray
+
+.has-on-max-padLeftReset
+    @media (min-width: g-max-width)
+        padding-left: 0
+
+@media (min-width: breakpoint-md)
+  .grid
+    display: grid
+    grid-template-rows: 60px auto auto auto
+    grid-template-columns: minmax(g-min-column-width, 1fr) minmax(g-min-column-width, 1fr) minmax(g-min-column-width, 1fr)
+
+  .main-header
+    display: grid
+    grid-template-columns: minmax(g-min-column-width, 1fr) minmax(g-min-column-width, 1fr) minmax(g-min-column-width, 1fr)
+    grid-column: 1 / span 4
+    align-items: center
+    &-block
+      &--title
+        grid-column: 1
+      &--page
+        transform: translateX(-50%)
+        grid-column: 2
+      &--date
+        text-align: left
+        transform: translateX(-50%)
+        grid-column: 3
+
+
+  .cell--fig1
+    grid-column: 1 / span 3
+
+  .cell--fig2
+    grid-column: 1 / span 3
+
+  .cell:nth-of-type(2)
+    grid-column: 1 / span 1
+
+  .cell:nth-of-type(3)
+    grid-column: 2 / span 1
+
+  .cell:nth-of-type(5)
+    grid-column: 1 / span 2
+
+@media (min-width: breakpoint-lg)
+  .grid
+    grid-template-rows: 60px auto auto
+    grid-template-columns: minmax(g-min-column-width, 1fr) minmax(g-min-column-width, 1fr) minmax(g-min-column-width, 1fr) minmax(g-min-column-width, 1fr)
+
+  .main-header
+    display: grid
+    grid-template-columns: minmax(g-min-column-width, 1fr) minmax(g-min-column-width, 1fr) minmax(g-min-column-width, 1fr) minmax(g-min-column-width, 1fr)
+    grid-column: 1 / span 4
+    align-items: center
+    &-block
+      &--title
+        grid-column: 1 / span 2
+      &--page
+        transform: translateX(-50%)
+        grid-column: 3
+      &--date
+        text-align: center
+        transform: translateX(-50%)
+        grid-column: 4
+
+  .cell--fig1
+    grid-row: 2
+    grid-column: 1 / span 2
+
+  .cell:nth-of-type(2)
+    grid-column: 1 / span 1
+    grid-row: 3
+
+  .cell:nth-of-type(3)
+    grid-column: 3
+    grid-row: 2
+
+  .cell:nth-of-type(5)
+    // here we explecity say span 3 even though it can span only 2 (2 + 2 = 4 columns total)
+    // this helps the text overflow as it should, on a imaginary new row
+    grid-row: 2 / span 3
+    grid-column: 4 / 4
+
+  .cell--fig2
+    grid-column: 2 / span 2
+    grid-row: 3 / auto

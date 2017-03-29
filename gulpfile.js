@@ -6,6 +6,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync');
 var prefix = require('gulp-autoprefixer');
+var stylus = require('gulp-stylus');
 
 ///////////////////////////
 // HTML CSS & SCRIPTS TASKS
@@ -40,6 +41,12 @@ gulp.task('styles', () => {
   }));
 });
 
+gulp.task('styl', function () {
+  return gulp.src('src/final.styl')
+    .pipe(stylus())
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('images', () => {
   gulp.src('src/**/*.{png,jpg,svg}')
     .pipe(gulp.dest('dist'))
@@ -52,7 +59,7 @@ gulp.task('images', () => {
 //PIPES SRC FILES INTO DIST & WATCHES CHANGES IN SRC
 ///////////////////////////////////////////////////
 
-gulp.task('build', ['html', 'scripts', 'styles', 'images']);
+gulp.task('build', ['html', 'scripts', 'styles', 'styl', 'images']);
 
 gulp.task('serve', ['build'], () => {
   sync.init({
@@ -63,6 +70,7 @@ gulp.task('serve', ['build'], () => {
   gulp.watch('src/*.{html,jade}', ['html']);
   gulp.watch('src/*.js', ['scripts']);
   gulp.watch('src/*.{css,scss,sass}', ['styles']);
+  gulp.watch('src/*.styl', ['styl']);
   gulp.watch('src/**/*.{png,jpg,svg}', ['images']);
 });
 
